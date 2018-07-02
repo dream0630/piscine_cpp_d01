@@ -67,7 +67,7 @@ KoalaNurseList *KoalaNurseList::removeFromID(int id)
 	KoalaNurseList *current = this;
 
 	for (int i = 0; current ; ++i) {
-		if (current && current->nurse && current->nurse->ID == id) {
+		if (current && current->nurse && current->nurse->getID() == id) {
 			if (previous) {
 				previous->next = current->next;
 				current->next = NULL;

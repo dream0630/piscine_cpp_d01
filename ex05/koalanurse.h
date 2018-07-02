@@ -8,6 +8,7 @@
 #include <sstream>
 #include <iomanip>
 #include <algorithm>
+#include "sickkoala.h"
 
 class KoalaNurse{
 	int id;
