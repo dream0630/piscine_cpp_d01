@@ -4,7 +4,7 @@
 KoalaNurse::KoalaNurse(int id)
 {
 	this->id = id;
-	this->work = false;
+	this->work = true;
 }
 
 KoalaNurse::~KoalaNurse()
