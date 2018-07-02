@@ -6,7 +6,7 @@ KoalaDoctor::KoalaDoctor(std::string name)
 {
 	this->name = name;
 	std::cout << "Dr." << name << ": Je suis le Dr."<< name << " ! Comment Kreoggez-vous ?" << std::endl;
-	this->work = false;
+	this->work = true;
 }
 
 KoalaDoctor::~KoalaDoctor()
