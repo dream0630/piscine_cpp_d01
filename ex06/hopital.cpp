@@ -6,7 +6,8 @@ SickKoalaList *sickKoalaList;
 
 void Hospital::addDoctor(KoalaDoctorList *doctorList)
 {
-	while (this->doctorList) {
+	while (this->doctorList) 
+	{
 		this->doctorList = this->doctorList->next;
 	}
 	this->doctorList = doctorList;

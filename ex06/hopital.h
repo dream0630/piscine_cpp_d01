@@ -10,15 +10,15 @@
 
 class Hospital {
 public:
-    KoalaNurseList *nurseList;
-    KoalaDoctorList *doctorList;
-    SickKoalaList *sickKoalaList;
+	KoalaNurseList *nurseList;
+	KoalaDoctorList *doctorList;
+	SickKoalaList *sickKoalaList;
 
-    void addDoctor(KoalaDoctorList*);
-    void addNurse(KoalaNurseList*);
-    void addSick(SickKoalaList*);
-    void run();
-    bool areDocAtWork();
+	void addDoctor(KoalaDoctorList*);
+	void addNurse(KoalaNurseList*);
+	void addSick(SickKoalaList*);
+	bool areDocAtWork();
+	void run();
 };
 
 #endif
