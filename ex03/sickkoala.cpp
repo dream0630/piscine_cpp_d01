@@ -26,7 +26,7 @@ bool SickKoala::takeDrug(std::string str)
 	std::transform(str.begin(), str.end(), str.begin(), tolower);
 	if (str.compare("mars") == 0)
 	{
-		std::cout << "Mr."<< this->name << ": Mars, et ca kreog !" << std::endl;
+		std::cout << "Mr."<< this->name << ": Mars, et ca Kreog !" << std::endl;
 		return true;
 	}
 	std::cout << "Mr."<< this->name << ": Goerkreog !" << std::endl;
