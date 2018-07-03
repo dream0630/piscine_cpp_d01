@@ -18,46 +18,36 @@ bool SickKoalaList::isEnd()
 void SickKoalaList::append(SickKoalaList *Koala)
 {
 	(void)Koala;
-	if (this->isEnd()) 
-	{
+	if (this->isEnd()) {
 		this->next = next;
-	} 
-	else 
-	{
+	} else {
 		this->next->append(next);
 	}
 }
 
 SickKoala *SickKoalaList::getFromName(std::string Name)
 {
-	if (this->koala && this->koala->getName() == Name) 
-	{
+	if (this->koala && this->koala->getName() == Name) {
 		return (this->koala);
-	} 
-	else if (this->next) 
-	{
+	} else if (this->next) {
 		return (this->next->getFromName(Name));
 	}
 	return (NULL);
 }
+
 
 SickKoalaList *SickKoalaList::remove(SickKoalaList *remove)
 {
 	SickKoalaList *previous = NULL;
 	SickKoalaList *current = this;
 
-	for (int i = 0; current ; ++i) 
-	{
-		if (current == remove) 
-		{
-			if (previous) 
-			{
+	for (int i = 0; current ; ++i) {
+		if (current == remove) {
+			if (previous) {
 				previous->next = current->next;
 				current->next = NULL;
 				return (this);
-			} 
-			else 
-			{
+			} else {
 				previous = this->next;
 				current->next = NULL;
 				return (previous);
@@ -92,8 +82,18 @@ SickKoalaList *SickKoalaList::removeFromName(std::string remove)
 	return (NULL);
 }
 
+SickKoala *SickKoalaList::getContent()
+{
+	return (this->koala);
+}
+
+SickKoalaList *SickKoalaList::getNext()
+{
+	return (this->next);
+}
+
 void SickKoalaList::dump() {
-	std::cout << "Liste des patients : ";
+	std::cout << "Patients : ";
 	SickKoalaList *current = this;
 	while (current) {
 		if (this->koala) {
@@ -110,14 +110,4 @@ void SickKoalaList::dump() {
 		}
 		current = current->next;
 	}
-}
-
-SickKoala *SickKoalaList::getContent()
-{
-	return (this->koala);
-}
-
-SickKoalaList *SickKoalaList::getNext()
-{
-	return (this->next);
 }

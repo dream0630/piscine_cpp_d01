@@ -16,18 +16,24 @@ bool KoalaDoctorList::isEnd()
 void KoalaDoctorList::append(KoalaDoctorList *doctor)
 {
 	(void)doctor;
-	if (this->isEnd()) {
+	if (this->isEnd()) 
+	{
 		this->next = next;
-	} else {
+	} 
+	else 
+	{
 		this->next->append(next);
 	}
 }
 
 KoalaDoctor* KoalaDoctorList::getFromName(std::string name)
 {
-	if (this->doctor && this->doctor->getName() == name) {
+	if (this->doctor && this->doctor->getName() == name) 
+	{
 		return (this->doctor);
-	} else if (this->next) {
+	} 
+	else if (this->next) 
+	{
 		return (this->next->getFromName(name));
 	}
 	return (NULL);
@@ -38,13 +44,18 @@ KoalaDoctorList* KoalaDoctorList::remove(KoalaDoctorList *remove)
 	KoalaDoctorList *previous = NULL;
 	KoalaDoctorList *current = this;
 
-	for (int i = 0; current ; ++i) {
-		if (current == remove) {
-			if (previous) {
+	for (int i = 0; current ; ++i) 
+	{
+		if (current == remove) 
+		{
+			if (previous) 
+			{
 				previous->next = current->next;
 				current->next = NULL;
 				return (this);
-			} else {
+			} 
+			else 
+			{
 				previous = this->next;
 				current->next = NULL;
 				return (previous);
@@ -61,13 +72,18 @@ KoalaDoctorList* KoalaDoctorList::removeFromName(std::string remove)
 	KoalaDoctorList *previous = NULL;
 	KoalaDoctorList *current = this;
 
-	for (int i = 0; current ; ++i) {
-		if (current && current->doctor && current->doctor->getName() == remove) {
-			if (previous) {
+	for (int i = 0; current ; ++i) 
+	{
+		if (current && current->doctor && current->doctor->getName() == remove) 
+		{
+			if (previous) 
+			{
 				previous->next = current->next;
 				current->next = NULL;
 				return (this);
-			} else {
+			} 
+			else 
+			{
 				previous = this->next;
 				current->next = NULL;
 				return (previous);
@@ -81,19 +97,24 @@ KoalaDoctorList* KoalaDoctorList::removeFromName(std::string remove)
 
 void KoalaDoctorList::dump()
 {
-	std::cout << "Liste des medecins : ";
+	std::cout << "Doctors : ";
 	KoalaDoctorList *current = this;
-	while (current) {
-		if (this->doctor) {
+	while (current) 
+	{
+		if (this->doctor) 
+		{
 			std::cout << current->doctor->getName();
 		}
-		else {
+		else 
+		{
 			std::cout << "NULL";
 		}
-		if (current->next) {
+		if (current->next) 
+		{
 			std::cout << ", ";
 		}
-		else {
+		else 
+		{
 			std::cout << "." << std::endl;
 		}
 		current = current->next;

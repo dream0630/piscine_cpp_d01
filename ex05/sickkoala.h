@@ -1,24 +1,18 @@
-#ifndef _SICKKOALA_
-#define _SICKKOALA_
+
+#ifndef SICKKOALA_H
+# define SICKKOALA_H
 
 #include <iostream>
-#include <string>
-#include <cstring>
-#include <fstream>
-#include <sstream>
-#include <iomanip>
-#include <algorithm>
 
-class SickKoala
-{
-	std::string	name;
+class SickKoala {
 	public:
-		SickKoala(std::string name);
-		~SickKoala();
-		void poke();
-		bool takeDrug(std::string str);
-		void overDrive(std::string str);
-		std::string getName();
+	std::string name;
+	SickKoala(std::string);
+    	~SickKoala();
+	void poke();
+	bool takeDrug(std::string);
+	void overDrive(std::string);
+	std::string getName();
 };
 
-#endif
+#endif 

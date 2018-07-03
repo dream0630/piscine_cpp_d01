@@ -1,25 +1,20 @@
-#ifndef _KOALADOCTOR_
-#define _KOALADOCTOR_
+#ifndef KOALADOCTOR_H
+#define KOALADOCTOR_H
 
 #include <iostream>
-#include <string>
-#include <cstring>
-#include <fstream>
-#include <sstream>
-#include <iomanip>
-#include <algorithm>
 #include "sickkoala.h"
+#include "koalanurse.h"
 
-class KoalaDoctor{
+class KoalaDoctor {
+public:
 	std::string name;
-	bool work;
+	bool isWorking;
 
-	public:
-		KoalaDoctor(std::string name);
-		~KoalaDoctor();
-		void diagnose(SickKoala *SickKoala);
-		void timeCheck();
-		std::string getName();
+	KoalaDoctor(std::string);
+	~KoalaDoctor();
+	void diagnose(SickKoala*);
+	void timeCheck();
+	std::string getName();
 };
 
 #endif

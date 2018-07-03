@@ -1,59 +1,53 @@
-#include "sickkoala.h"
+#include <fstream>
 #include "koalanurse.h"
+#include "sickkoala.h"
 
-KoalaNurse::KoalaNurse(int id)
-{
-	this->id = id;
-	this->work = true;
+KoalaNurse:: KoalaNurse(int ID) {
+	this->ID = ID;
+	this->isWorking=false;
 }
 
-KoalaNurse::~KoalaNurse()
-{
-	std::cout << "Nurse "<< this->id << ": Enfin un peu de repos !" << std::endl;
-	this->id = 0;
+KoalaNurse::~KoalaNurse() {
+	std::cout << "Nurse "<< this->ID << ": Enfin un peu de repos !" << std::endl;
 }
 
-void KoalaNurse::giveDrug(std::string drug, SickKoala *sickkoala)
+void KoalaNurse :: giveDrug(std::string Drug, SickKoala *Koala)
 {
-	if (sickkoala)
-		sickkoala->takeDrug(drug);
+	Koala->takeDrug(Drug);
 }
 
-std::string	KoalaNurse::readReport(std::string report)
+std::string KoalaNurse :: readReport(std::string filename)
 {
-	std::ifstream file(report.c_str(), std::ios::in);
-	std::string	drug;
-	std::string	koala;
-	std::size_t	pos;
+	std::ifstream in_stream(filename);
+	std::string Drugs;
+	std::size_t pos = filename.find(".report");
+	std::string patientName = filename.substr(0, pos);
 
-	koala = report;
-	report.clear();
-	if (file)
-	{
-		if (!getline(file, drug))
-			return report;
-		if ((pos = koala.find(".report", 0)) != std::string::npos && pos + 7 == koala.length())
-			koala.replace(koala.length() - 7, 7, "\0");
-		else
-			return report;
-		std::cout << "Nurse " << this->id << ": Kreog ! Il faut donner un " << drug << " a Mr." << koala << " !" << std::endl;
-		return drug;
+	if (in_stream.fail()) {
+		Drugs = "";
+	} else {
+		std::string line;
+
+		while (std::getline(in_stream, line)) {
+			Drugs += line;
+		}
 	}
-	else
-		return report;
-	return drug;
+	std::cout << "Nurse " << this->ID <<": Kreog ! Il faut donner un " << Drugs << " a Mr." << patientName << " !" << std::endl;
+	return (Drugs);
 }
 
-void KoalaNurse::timeCheck()
+void KoalaNurse :: timeCheck()
 {
-	if (this->work)
-		std::cout << "Nurse "<< this->id << ": Je commence le travail !" << std::endl;
-	else if (!this->work)
-		std::cout << "Nurse "<< this->id << ": Je rentre dans ma foret d'eucalyptus !" << std::endl;
-	this->work = !this->work;
+	if (this->isWorking == false) {
+		std::cout << "Nurse "<< this->ID << ": Je commence le travail !" << std::endl;
+		this->isWorking = true;
+	} else {
+		std::cout << "Nurse "<< this->ID << ": Je rentre dans ma foret d'eucalyptus !" << std::endl;
+		this->isWorking = false;
+	}
 }
 
 int KoalaNurse::getID()
 {
-	return (this->id);
+	return (this->ID);
 }

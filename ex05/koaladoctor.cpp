@@ -1,45 +1,43 @@
-#include "sickkoala.h"
-#include "koalanurse.h"
+#include <iostream>
+#include <fstream>
 #include "koaladoctor.h"
 
 KoalaDoctor::KoalaDoctor(std::string name)
 {
 	this->name = name;
-	std::cout << "Dr." << name << ": Je suis le Dr."<< name << " ! Comment Kreoggez-vous ?" << std::endl;
-	this->work = true;
+	this->isWorking = false;
+	//std::cout<<"Dr." << this->name << ": I'm Dr." << this->name <<" ! Comment Kreoggez-vous ?";
+	std::cout << "Dr." << this->name << ": Je suis le Dr."<< this->name << " ! Comment Kreoggez-vous ?" << std::endl;
 }
 
 KoalaDoctor::~KoalaDoctor()
 {
-	this->name.empty();
+
 }
 
-void KoalaDoctor::diagnose(SickKoala *SickKoala)
+void KoalaDoctor::diagnose(SickKoala *koala)
 {
-	std::string drug[] = {"mars", "Buronzand", "Viagra", "Extasy", "Feuille d'eucalyptus"};
-	std::string report = SickKoala->getName() + ".report";
-	std::ofstream file(report.c_str(), std::ios::out);
-
-	std::cout << "Dr." << this->name << ": Alors qu'est-ce qui vous goerk Mr." << SickKoala->getName() << " ?" << std::endl;
-
-	SickKoala->poke();
-	if (file)
-	{
-		file << drug[random() % 5] << std::endl;
-		file.close();
-	}
+	std::string filename = koala->getName() + ".report";
+	std::cout<<"Dr."<< this->name << ": Alors qu'est-ce qui vous goerk Mr."  << koala->name<< " \?" << std::endl;
+	koala->poke();
+	std::ofstream outfile (filename, std::ofstream::out);
+	std::string tab[5] = {"mars", "Buronzand", "Viagra", "Extasy", "Eucalyptus leaf"};
+	outfile << tab[rand()%5] << std::endl;
 }
 
 void KoalaDoctor::timeCheck()
 {
-	if (this->work)
-		std::cout << "Dr."<< this->name << ": Je commence le travail !" << std::endl;
-	else if (!this->work)
-		std::cout << "Dr."<< this->name << ": Je rentre dans ma foret d'eucalyptus !" << std::endl;
-	this->work = !this->work;
+	if (this->isWorking == false) {
+		std::cout << "Dr." << this->name << ": Je commence le travail !" << std::endl;
+		this->isWorking = true;
+	} else {
+		std::cout<< "Dr." << this->name << ": Je rentre dans ma foret d'eucalyptus !" << std::endl;
+		this->isWorking = false;
+	}
 }
 
 std::string KoalaDoctor::getName()
 {
 	return (this->name);
 }
+

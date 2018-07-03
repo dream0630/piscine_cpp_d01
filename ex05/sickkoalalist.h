@@ -1,5 +1,5 @@
-#ifndef _SICKKOALALIST_
-#define _SICKKOALALIST_
+#ifndef SICKKOALALIST_H
+#define SICKKOALALIST_H
 
 #include <iostream>
 #include "sickkoala.h"
@@ -7,17 +7,17 @@
 class SickKoalaList {
 public:
 	SickKoala *koala;
-	SickKoalaList *next;
-
+    SickKoalaList *next;
 	SickKoalaList(SickKoala*);
 	bool isEnd();
 	void append(SickKoalaList*);
 	SickKoala *getFromName(std::string);
 	SickKoalaList *remove(SickKoalaList*);
 	SickKoalaList *removeFromName(std::string);
-	void dump();
 	SickKoala *getContent();
 	SickKoalaList *getNext();
+	void dump();
 };
 
-#endif
+
+#endif //CPP_D06_SICKKOALALIST_H

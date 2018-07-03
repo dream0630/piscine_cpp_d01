@@ -1,3 +1,4 @@
+
 #include "iostream"
 #include "koalanurselist.h"
 #include "koalanurse.h"
@@ -18,9 +19,12 @@ bool KoalaNurseList::isEnd()
 void KoalaNurseList::append(KoalaNurseList *nurse)
 {
 	(void)nurse;
-	if (this->isEnd()) {
+	if (this->isEnd()) 
+	{
 		this->next = next;
-	} else {
+	} 
+	else 
+	{
 		this->next->append(next);
 	}
 }
@@ -43,13 +47,18 @@ KoalaNurseList *KoalaNurseList::remove(KoalaNurseList *remove)
 	KoalaNurseList *previous = NULL;
 	KoalaNurseList *current = this;
 
-	for (int i = 0; current ; ++i) {
-		if (current == remove) {
-			if (previous) {
+	for (int i = 0; current ; ++i) 
+	{
+		if (current == remove) 
+		{
+			if (previous) 
+			{
 				previous->next = current->next;
 				current->next = NULL;
 				return (this);
-			} else {
+			} 
+			else 
+			{
 				previous = this->next;
 				current->next = NULL;
 				return (previous);
@@ -66,13 +75,18 @@ KoalaNurseList *KoalaNurseList::removeFromID(int id)
 	KoalaNurseList *previous = NULL;
 	KoalaNurseList *current = this;
 
-	for (int i = 0; current ; ++i) {
-		if (current && current->nurse && current->nurse->getID() == id) {
-			if (previous) {
+	for (int i = 0; current ; ++i) 
+	{
+		if (current && current->nurse && current->nurse->ID == id) 
+		{
+			if (previous) 
+			{
 				previous->next = current->next;
 				current->next = NULL;
 				return (this);
-			} else {
+			} 
+			else 
+			{
 				previous = this->next;
 				current->next = NULL;
 				return (previous);
@@ -88,17 +102,22 @@ void KoalaNurseList::dump()
 {
 	std::cout << "Liste des infirmieres : ";
 	KoalaNurseList *current = this;
-	while (current) {
-		if (this->nurse) {
+	while (current) 
+	{
+		if (this->nurse) 
+		{
 			std::cout << current->nurse->getID();
 		}
-		else {
+		else 
+		{
 			std::cout << "NULL";
 		}
-		if (current->next) {
+		if (current->next) 
+		{
 			std::cout << ", ";
 		}
-		else {
+		else 
+		{
 			std::cout << "." << std::endl;
 		}
 		current = current->next;

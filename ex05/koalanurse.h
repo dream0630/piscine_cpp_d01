@@ -1,26 +1,19 @@
-#ifndef _KOALANURSE_
-#define _KOALANURSE_
+#ifndef KOALANURSE_H
+# define KOALANURSE_H
 
 #include <iostream>
-#include <string>
-#include <cstring>
-#include <fstream>
-#include <sstream>
-#include <iomanip>
-#include <algorithm>
 #include "sickkoala.h"
 
-class KoalaNurse{
-	int id;
-	bool work;
-
-	public:
-		KoalaNurse(int id);
-		~KoalaNurse();
-		void giveDrug(std::string drug, SickKoala *SickKoala);
-		std::string readReport(std::string report);
-		void timeCheck();
-		int getID();
+class KoalaNurse {
+public:
+	int ID;
+	bool isWorking;
+	KoalaNurse(int);
+~KoalaNurse();
+	void giveDrug(std::string, SickKoala*);
+	std::string readReport(std::string);
+	void timeCheck();
+	int getID();
 };
 
 #endif
