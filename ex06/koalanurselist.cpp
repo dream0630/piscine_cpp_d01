@@ -25,7 +25,7 @@ void KoalaNurseList::append(KoalaNurseList *nurse)
 	}
 }
 
-KoalaNurse *KoalaNurseList::getFromId(int id)
+KoalaNurse *KoalaNurseList::getFromID(int id)
 {
 	if (this->nurse && this->nurse->getID() == id) 
 	{
@@ -33,7 +33,7 @@ KoalaNurse *KoalaNurseList::getFromId(int id)
 	} 
 	else if (this->next) 
 	{
-		return (this->next->getFromId(id));
+		return (this->next->getFromID(id));
 	}
 	return (NULL);
 }

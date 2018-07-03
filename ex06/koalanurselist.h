@@ -12,7 +12,7 @@ public:
     KoalaNurseList(KoalaNurse*);
     bool isEnd();
     void append(KoalaNurseList*);
-    KoalaNurse *getFromId(int);
+    KoalaNurse *getFromID(int);
     KoalaNurseList *remove(KoalaNurseList*);
     KoalaNurseList *removeFromID(int);
     void dump();
