@@ -1,40 +1,45 @@
 #include "hopital.h"
 
-KoalaNurseList *nurseList;
-KoalaDoctorList *doctorList;
-SickKoalaList *sickKoalaList;
+KoalaNurseList *nurseList = NULL;
+KoalaDoctorList *doctorList = NULL;
+SickKoalaList *sickKoalaList = NULL;
 
 void Hospital::addDoctor(KoalaDoctorList *doctorList)
 {
-	while (this->doctorList) 
+	while (this->doctorList->isEnd()) 
 	{
-		this->doctorList = this->doctorList->next;
+		if(!this->doctorList->next)
+			break;
 	}
 	this->doctorList = doctorList;
 	this->doctorList->next = NULL;
-	std::cout << "[HOSPITAL] Doctor "<< doctorList->doctor->getName() <<" just arrived!\n";
+	std::cout << "[HOSPITAL] Doctor "<< doctorList->doctor->getName() <<" just arrived !\n";
 	this->doctorList->doctor->timeCheck();
 }
 
 void Hospital::addNurse(KoalaNurseList *nurseList)
 {
-	while (this->nurseList) {
-		this->nurseList = this->nurseList->next;
+	while (this->nurseList->isEnd()) 
+	{
+		if(!this->nurseList->next)
+			break;
+		//this->nurseList = this->nurseList->next;
 	}
 	this->nurseList = nurseList;
 	this->nurseList->next = NULL;
-	std::cout << "[HOSPITAL] Nurse "<< nurseList->nurse->getID() <<" just arrived!\n";
+	std::cout << "[HOSPITAL] Nurse "<< nurseList->nurse->getID() <<" just arrived !\n";
 	this->nurseList->nurse->timeCheck();
 }
 
 void Hospital::addSick(SickKoalaList *sickKoalaList)
 {
-	while (this->sickKoalaList) {
+	while (this->sickKoalaList->isEnd()) 
+	{
 		this->sickKoalaList = this->sickKoalaList->next;
 	}
 	this->sickKoalaList = sickKoalaList;
 	this->sickKoalaList->next = NULL;
-	std::cout << "[HOSPITAL] Patient "<< sickKoalaList->koala->getName() <<" just arrived!\n";
+	std::cout << "[HOSPITAL] Patient "<< sickKoalaList->koala->getName() <<" just arrived !\n";
 }
 
 bool Hospital::areDocAtWork()
@@ -55,7 +60,7 @@ void Hospital::run()
 	SickKoalaList *currentSick = this->sickKoalaList;
 
 	if (areDocAtWork()) {
-		std::cout << "[HOSPITAL] Work starting with:\n";
+		std::cout << "[HOSPITAL] Debut du travail avec :\n";
 		currentDoc->dump();
 		currentNurse->dump();
 		currentSick->dump();
